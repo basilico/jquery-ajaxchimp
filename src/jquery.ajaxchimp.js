@@ -54,7 +54,7 @@ For e.g. 'http://blahblah.us1.list-manage.com/subscribe/post-json?u=5afsdhfuhdsi
                 3: /The domain portion of the email address is invalid \(the portion after the @: (.+)\)/,
                 4: /The username portion of the email address is invalid \(the portion before the @: (.+)\)/,
                 5: /This email address looks fake or invalid. Please enter a real email address/,
-                6: /.+\#6592.+/,
+                6: /Recipient "(.+@.+)" has too many recent signup requests/,
                 7: /(.+@.+) is already subscribed to list (.+)\..+<a href.+/
             }
         },
