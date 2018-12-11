@@ -79,8 +79,8 @@ For e.g. 'http://blahblah.us1.list-manage.com/subscribe/post-json?u=5afsdhfuhdsi
         translations: {},
         defaultOptions: {
             language: 'en',
-            errorSelector: '#mce-error-response',
-            successSelector: '#mce-success-response',
+            errorSelector: 'label[for="mc-email"]',
+            successSelector: 'label[for="mc-email"]',
             token: null,
         },
         successMessage: 'Please confirm by clicking on the link we just sent to ',
@@ -220,6 +220,9 @@ For e.g. 'http://blahblah.us1.list-manage.com/subscribe/post-json?u=5afsdhfuhdsi
                         }
                     }
                     deferred.resolve(data, textStatus, jqXHR, form);
+                    if (settings.callback) {
+                        settings.callback(data);
+                    }
                 }).fail(function (jqXHR, textStatus, errorThrown) {
                     deferred.reject(jqXHR, textStatus, errorThrown, form);
                 });
