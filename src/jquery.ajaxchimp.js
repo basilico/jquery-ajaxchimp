@@ -43,7 +43,10 @@ For e.g. 'http://blahblah.us1.list-manage.com/subscribe/post-json?u=5afsdhfuhdsi
 
     $.ajaxChimp = {
         regexPatterns: {
-            success: /Please confirm by clicking on the link we just sent to (.+@.+)/,
+            success: {
+              1: /Please confirm by clicking on the link we just sent to (.+@.+)/,
+              2: /Thank you for subscribing!/
+            },
             submit: /Submitting.../,
             error: {
                 1: /Please enter a value/,
@@ -57,7 +60,10 @@ For e.g. 'http://blahblah.us1.list-manage.com/subscribe/post-json?u=5afsdhfuhdsi
         },
         defaultTranslations: {
             en: {
-                success: 'Please confirm by clicking on the link we just sent to $1',
+                success: {
+                  1: 'Please confirm by clicking on the link we just sent to $1',
+                  2: 'Thank you for subscribing!'
+                },
                 submit: 'Submitting...',
                 error: {
                     1: 'Please enter a value',
@@ -190,11 +196,7 @@ For e.g. 'http://blahblah.us1.list-manage.com/subscribe/post-json?u=5afsdhfuhdsi
                     if (data.result === 'success') {
                         email.removeClass('error').addClass('valid');
                         if (success_div.length !== 0) {
-                            msg = $.ajaxChimp.getTranslation(
-                                ($.ajaxChimp.successMessage + request_data.EMAIL),
-                                settings.language,
-                                'success'
-                            );
+                            msg = $.ajaxChimp.getTranslation(data.msg, settings.language, 'success');
                             error_div.text('').hide();
                             success_div.text(msg).show(500);
                         }
