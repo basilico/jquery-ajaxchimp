@@ -197,7 +197,7 @@ For e.g. 'http://blahblah.us1.list-manage.com/subscribe/post-json?u=5afsdhfuhdsi
                         if (success_div.length !== 0) {
                             msg = $.ajaxChimp.getTranslation(data.msg, settings.language, 'success');
                             error_div.text('').hide();
-                            success_div.text(msg).show(500);
+                            success_div.text(msg).show();
                         }
                     } else{
                         email.removeClass('valid').addClass('error');
@@ -215,7 +215,7 @@ For e.g. 'http://blahblah.us1.list-manage.com/subscribe/post-json?u=5afsdhfuhdsi
                             }
                             msg = $.ajaxChimp.getTranslation(msg, settings.language, 'error');
                             success_div.text('').hide();
-                            error_div.text(msg).show(500);
+                            error_div.text(msg).show();
                         }
                     }
                     deferred.resolve(data, textStatus, jqXHR, form);
@@ -235,7 +235,7 @@ For e.g. 'http://blahblah.us1.list-manage.com/subscribe/post-json?u=5afsdhfuhdsi
                         'submit'
                     );
                     error_div.text('').hide();
-                    success_div.text(submitMsg).show(500);
+                    success_div.text(submitMsg).show();
                 }
             });
             return deferred;
