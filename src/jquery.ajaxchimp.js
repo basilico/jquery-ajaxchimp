@@ -44,7 +44,7 @@ For e.g. 'http://blahblah.us1.list-manage.com/subscribe/post-json?u=5afsdhfuhdsi
     $.ajaxChimp = {
         regexPatterns: {
             success: {
-              1: /Please confirm by clicking on the link we just sent to (.+@.+)/,
+              1: /Almost finished... We need to confirm your email address. To complete the subscription process, please click the link in the email we just sent you./,
               2: /Thank you for subscribing!/
             },
             submit: /Submitting.../,
@@ -61,7 +61,7 @@ For e.g. 'http://blahblah.us1.list-manage.com/subscribe/post-json?u=5afsdhfuhdsi
         defaultTranslations: {
             en: {
                 success: {
-                  1: 'Please confirm by clicking on the link we just sent to $1',
+                  1: 'Almost finished... To complete the subscription process, please click the link in the email we just sent you.',
                   2: 'Thank you for subscribing!'
                 },
                 submit: 'Submitting...',
