@@ -83,7 +83,6 @@ For e.g. 'http://blahblah.us1.list-manage.com/subscribe/post-json?u=5afsdhfuhdsi
             successSelector: 'label[for="mc-email"]',
             token: null,
         },
-        successMessage: 'Please confirm by clicking on the link we just sent to ',
         submitMessage: 'Submitting...',
         init: function (selector, options) {
             $(selector).ajaxChimp(options);
