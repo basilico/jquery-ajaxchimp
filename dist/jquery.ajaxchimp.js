@@ -195,31 +195,32 @@ For e.g. 'http://blahblah.us1.list-manage.com/subscribe/post-json?u=5afsdhfuhdsi
                     dataType: 'jsonp'
                 }).done(function (data, textStatus, jqXHR) {
                     if (data.result === 'success') {
+                        msg = $.ajaxChimp.getTranslation(data.msg, settings.language, 'success');
                         email.removeClass('error').addClass('valid');
                         if (success_div.length !== 0) {
-                            msg = $.ajaxChimp.getTranslation(data.msg, settings.language, 'success');
                             error_div.text('').hide();
                             success_div.text(msg).show();
                         }
                     } else{
                         email.removeClass('valid').addClass('error');
-                        if (error_div.length !== 0) {
-                            try {
-                                var parts = data.msg.split(' - ', 2);
-                                if (parts[1] === undefined) {
-                                    msg = data.msg;
-                                } else {
-                                    msg = parts[1];
-                                }
-                            }
-                            catch (e) {
+                        try {
+                            var parts = data.msg.split(' - ', 2);
+                            if (parts[1] === undefined) {
                                 msg = data.msg;
+                            } else {
+                                msg = parts[1];
                             }
-                            msg = $.ajaxChimp.getTranslation(msg, settings.language, 'error');
+                        }
+                        catch (e) {
+                            msg = data.msg;
+                        }
+                        msg = $.ajaxChimp.getTranslation(msg, settings.language, 'error');
+                        if (error_div.length !== 0) {
                             success_div.text('').hide();
                             error_div.text(msg).show();
                         }
                     }
+                    data.msg = msg; // overwrite original message with the translate one
                     deferred.resolve(data, textStatus, jqXHR, form);
                     if (settings.callback) {
                         settings.callback(data);
