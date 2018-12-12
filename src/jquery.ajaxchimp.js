@@ -18,8 +18,8 @@ Options:
 =======
 options = {
     language: 'en',
-    errorSelector: '.error-message',
-    successSelector: '.success-message',
+    errorSelector: 'label[for="mc-email"]',
+    successSelector: 'label[for="mc-email"]',
     url: 'http://blahblah.us1.list-manage.com/subscribe/post?u=5afsdhfuhdsiufdba6f8802&id=4djhfdsh99f',
     token: 'anti-bot token from mailchimp form'
 }
